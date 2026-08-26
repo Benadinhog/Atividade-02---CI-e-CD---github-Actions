@@ -1,10 +1,18 @@
-def somar(a, b):
-return a + b
-def subtrair(a, b):
-return a - b
-def multiplicar(a, b):
-return a * b
-def dividir(a, b):
-if b == 0:
-raise ValueError("Divisão por zero não permitida")
-return a / b
+import pytest
+from calculadora import somar, subtrair, multiplicar, dividir
+
+def test_somar():
+    assert somar(2, 3) == 5
+
+def test_subtrair():
+    assert subtrair(10, 4) == 6
+
+def test_multiplicar():
+    assert multiplicar(3, 5) == 15
+
+def test_dividir():
+    assert dividir(10, 2) == 5
+
+def test_divisao_por_zero():
+    with pytest.raises(ValueError):
+        dividir(10, 0)
